@@ -94,7 +94,13 @@ export default class DetailedAssetView extends Component {
                             </div>
 
                             <div className="card-body">
-                                Endret: {this.state.asset.altered}
+                                ID: {this.state.asset.ID}
+                            </div>
+                            <div className="card-body">
+                                Info ID: {this.state.asset.InfoID}
+                            </div>
+                            <div className="card-body">
+                                Relasjons ID: {this.state.asset.ParentBusinessRelationID}
                             </div>
                         </div>
 
@@ -107,7 +113,7 @@ export default class DetailedAssetView extends Component {
                                     
                                     <div className="card-header d-flex align-items-center">
                                         <div className="d-flex justify-content-center col">
-                                            <div className="h4 m-0 text-center">Instrument</div>
+                                            <div className="h4 m-0 text-center">Utfyllende info</div>
                                         </div>
                                         <AssetModal itemId = {this.state.assetId} />
                                     </div>
@@ -119,28 +125,15 @@ export default class DetailedAssetView extends Component {
                                 <div className="col1">
                                     
                                         <div className="card-body">
-                                        Merke: {this.state.asset.brand}
+                                        Status: {this.state.asset.StatusCode}
                                         </div>
 
                                         <div className="card-body">
-                                        Serienummer: {this.state.asset.serialnumber}
+                                        Opprettet av: {this.state.asset.CreatedBy}
                                         </div>
 
                                         <div className="card-body">
-                                        Verdi: {this.state.asset.current_value}
-                                        </div>
-
-                                        <div className="card-body">
-                                        Original pris: {this.state.asset.original_price}
-                                        </div>
-                                        
-                                        
-                                        <div className="card-body">
-                                        Type: {this.state.asset.type_label}
-                                        </div>
-
-                                        <div className="card-body">
-                                        Variant: {this.state.asset.variant_label}
+                                        Endret av: {this.state.asset.UpdatedBy}
                                         </div>
 
                                     </div>
@@ -149,24 +142,7 @@ export default class DetailedAssetView extends Component {
                                     
                                 <Col lg="6">  {/* kolonne inni kort oppe til høgre - høgre */}
                                 
-                                    <div className="col2">
-                                    <div className="card-body">
-                                            Dato kjøpt: {this.state.asset.date_bought}
-                                        </div>
-
-                                        <div className="card-body">
-                                            Dato kondemnert: {this.state.asset.date_scrapped}
-                                        </div>
-
-                                        <div className="card-body">
-                                            Beskrivelse: {this.state.asset.description_long}
-                                        </div> 
-
-                                        <div className="card-body">
-                                            Teknisk Beskrivelse: {this.state.asset.description_technical}
-                                        </div> 
-
-                                    </div>
+                                    
                                 </Col>   
                             </Row>
 
@@ -174,43 +150,16 @@ export default class DetailedAssetView extends Component {
                     </div> {/* card slutt */}
                 </Col> 
 
-                
-
-                <div className="card card-default" /*kort 2 høgre side  */>
-                    <div className="card-header">
-                        <div className="card-title text-center">jaja </div>
-                    </div>
-                    <div className="card-body">
-                        
-                        <div className="card-body">
-                        dsadsadsadsa 1
-                        </div>
-
-                        <div className="card-body">
-                        dsadsa
-                        </div>
-                
-                        <div className="text-right">
-                        <Button color="primary">Rediger</Button>
-                        </div>
-
-                    </div>
-                </div>
-
                     <div className="card card-default" /*kort 2 høgre side  */>
                         <div className="card-header">
-                            <div className="card-title text-center">jaja</div>
+                            <div className="card-title text-center">Kommentar</div>
                         </div>
                         <div className="card-body">
                             
                             <div className="card-body">
-                            dsadsadsadsa 1
+                            Kommentar   {this.state.asset.Comment}
                             </div>
 
-                            <div className="card-body">
-                            dsadsadsa 2
-                            </div>
-                    
                             <div className="text-right">
                             <Button color="primary">Rediger</Button>
                             </div>
