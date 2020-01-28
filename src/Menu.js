@@ -3,7 +3,7 @@ const Menu = [
         heading: 'Meny',
         translate: 'sidebar.heading.HEADER'
     },
-    {
+    /*{
         name: 'Styrearbeid',
         icon: 'icon-grid',
         translate: 'sidebar.nav.styrearbeid.STYREARBEID',
@@ -49,7 +49,7 @@ const Menu = [
                 translate: 'sidebar.nav.persons.PERSONS'
             }
         ]
-    },
+    },*/
     {
         name: 'Eiendeler',
         icon: 'icon-note',
@@ -61,6 +61,16 @@ const Menu = [
             }
         ]
     },
+    {
+        name: 'Uni',
+        icon: 'icon-note',
+        submenu: [{
+                name: 'Kontakter',
+                path: '/instrumenter',
+                translate: 'sidebar.nav.persons.INSTRUMENTS'
+            }
+        ]
+    },/*
     {
         name: 'Kalender',
         icon: 'icon-calendar',
@@ -92,7 +102,7 @@ const Menu = [
         icon: 'icon-chemistry',
         path: '/test',
         translate: 'sidebar.nav.TEST'
-    },
+    },*/
     /*
     {
         name: 'Dashboard',
