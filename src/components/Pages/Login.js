@@ -57,7 +57,7 @@ class Login extends React.Component {
                 <div className="card card-flat">
                     <div className="card-header text-center bg-dark">
                         <a href="">
-                            <img className="block-center rounded" src="img/logo.png" alt="Logo"/>
+                            <img className="block-center rounded" />
                         </a>
                     </div>
 
@@ -72,11 +72,7 @@ class Login extends React.Component {
                                 <input id="fbPass" type="password" placeholder="Passord" required="required" className="form-control" />
                             </div>
                             <div style={{ display: this.state.showLoginLoading ? 'none' : '' }} className="clearfix">
-                                <div className="text-right">
-                                    <Link to="recover" className="text-muted">Glemt passord?</Link>
-                                    <p className="text-muted text-link" onClick={this.displayMobileLogin.bind(this, 'elements')}>Log inn med mobilnummer?</p>
-                                    <a className="text-muted text-link" href="mailto:post@styreportalen.no">Kontakt oss</a>
-                                </div>
+                                
                             </div>
 
                             <button style={{ display: this.state.showLoginLoading ? 'none' : '' }} type="submit" id="submitLogin" className="btn btn-block btn-primary mt-lg">Logg inn</button>

@@ -8,7 +8,6 @@ import * as moment from 'moment';
 import AssetModal from "./AssetsModal"
 import ServiceHistoryModal from "./ServiceHistoryModal"
 import MUIDataTable from "mui-datatables";
-import ServiceTable from "./ServiceTable"
 
 export default class DetailedAssetView extends Component {
 
@@ -115,7 +114,6 @@ export default class DetailedAssetView extends Component {
                                 <div className="card-title text-center">Service historikk</div>
                             </div>
                             <div className="card-body">
-                                <ServiceTable />
                                 
                             </div>
                         </div>

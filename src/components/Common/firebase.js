@@ -42,16 +42,6 @@ export const hasRole = (reqRoles) => {
     if(roles){
         roles = roles.split(",");
 
-        /*
-        var reqRole = reqRoles.split(",");
-        var intRole = roles.reduce((r, a) => reqRole.includes(a) && r.concat(a) || r, []);
-
-        if(intRole.length){
-            return true;
-        } else {
-            return false;
-        }
-        */
         
         if(roles.indexOf(reqRoles) >= 0){
             return true;

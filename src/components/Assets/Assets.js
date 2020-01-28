@@ -46,7 +46,7 @@ class AssetsPage extends Component {
                 </div>
                 
                 <Row>
-                <AssetModal itemId = {0} /> 
+                <AssetModal itemId = {0}  /> 
                 
                 <HandleTypes  />
                 </Row>

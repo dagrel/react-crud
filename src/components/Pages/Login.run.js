@@ -40,15 +40,13 @@ export default (state) => {
 					};
 					
 					userBatch.set(userRef, userObj);
-					//userBatch.set(logRef, logObj);
-					//userBatch.set(userLogRef, userLogObj);
+					
 					
 					userBatch.commit().then(function () {
 						var favOrgId = user.data().fav_org;
 						var userRolesRef = DB.collection("users").doc(uid+"/styreportalen/"+favOrgId);
 						var userOrgTablesRef = DB.collection(`users/${uid}/styreportalen/${favOrgId}/tables`);
 						var orgTablesRef = DB.collection(`organizations/${favOrgId}/tables`);
-						//userRolesRef.get().then(function(userRoles) {
 
 						Promise.all([userRolesRef.get(), userOrgTablesRef.get(), orgTablesRef.get()]).then(function(results) {
 							let userRoles = results[0];
@@ -116,110 +114,6 @@ export default (state) => {
 					showLoginError: true
 				});
 			});
-		}
-	});
-
-	var mobileform = $("#loginMobileForm");
-	
-	mobileform.submit(function( event ) {
-		event.preventDefault();
-
-		let mobile = $("#fbMobile").val();
-
-		if(mobile.length > 0){
-			state.setState({
-				showMobileLoading: true
-			});
-
-			$.ajax({
-				url : "https://us-central1-styreportalenv2b.cloudfunctions.net/checkMobile",
-				type: "POST",
-				data : {
-					mobile: mobile
-				},
-				success: function(data, textStatus, jqXHR)
-				{
-					var returnData = $.parseJSON(data);
-	
-					if(returnData.return){
-						var appVerifier = window.recaptchaVerifier;
-
-						/*
-						state.setState({
-							showMobile: false,
-							showMobileLoading: false,
-							showMobileError: false,
-							showConfirmMobile: true
-						});
-						*/
-						
-						Auth.signInWithPhoneNumber("+47"+mobile, appVerifier)
-							.then(function (confirmationResult) {
-							// SMS sent. Prompt user to type the code from the message, then sign the
-							// user in with confirmationResult.confirm(code).
-							window.confirmationResult = confirmationResult;
-
-							state.setState({
-								showMobile: false,
-								showMobileLoading: false,
-								showMobileError: false,
-								showConfirmMobile: true
-							});
-						}).catch(function (error) {
-							state.setState({
-								showMobileLoading: false,
-								showMobileError: true
-							});
-						});
-					} else {
-						state.setState({
-							showMobileLoading: false,
-							showMobileError: true
-						});
-					}
-				},
-				error: function (jqXHR, textStatus, errorThrown)
-				{
-					state.setState({
-						showMobileLoading: false,
-						showMobileError: true
-					});
-				}
-			});
-
-		}
-	});
-
-	var confirmmobileform = $("#confirmMobileForm");
-	
-	confirmmobileform.submit(function( event ) {
-		event.preventDefault();
-
-		let confirmationCode = $("#fbConfirm").val();
-
-		if(confirmationCode.length > 0){
-			state.setState({
-				showConfirmMobileLoading: true,
-				showConfirmMobileError: false
-			});
-
-			window.confirmationResult.confirm(confirmationCode).then(function (result) {
-				window.verifyingCode = false;
-				window.confirmationResult = null;
-
-				var user = result.user;
-
-				/*
-				// User signed in successfully.
-				var user = result.user;
-				*/
-			}).catch(function (error) {
-				state.setState({
-					showConfirmMobileLoading: false,
-					showConfirmMobileError: true
-				});
-			});
-
 		}
 	});
 

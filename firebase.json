@@ -1,6 +1,6 @@
 {
   "hosting": {
-	"target": "styrearbeid",
+	"target": "uni",
     "public": "build",
     "ignore": [
       "firebase.json",

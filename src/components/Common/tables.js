@@ -3,7 +3,7 @@ import { Router, Route, Link } from 'react-router-dom';
 
 
 
-export const contactsColumn = [
+/*export const contactsColumn = [
     {
         "label": "ID",
         "name": "key",
@@ -35,23 +35,13 @@ export const contactsColumn = [
     },
     
 ];
-
+*/
 
 
 export const assetsColumn = [
     {
         "label": "ID",
-        "name": "key",
-        "options": {
-            "filter": false,
-            "sort": false,
-            "display": "excluded"
-        }
-    },
-    
-    {
-        "label": "Tittel",
-        "name": "title",
+        "name": "ID",
         "options": {
             "filter": false,
             "sort": true,
@@ -62,23 +52,32 @@ export const assetsColumn = [
             )
         }
     },
+    
     {
-        "label": "Merke",
-        "name": "brand",
+        "label": "Info ID",
+        "name": "InfoID",
+        "options": {
+            "filter": false,
+            "sort": true,
+        }
+    },
+    {
+        "label": "Selskapsrelasjon",
+        "name": "ParentBusinessRelationID",
         "options": {
             "filter": true,
             "sort": true
         }
     },
     {
-        "label": "Serienummer",
-        "name": "serialnumber",
+        "label": "Rolle",
+        "name": "Role",
         "options": {
             "filter": false,
             "sort": true
         }
     },
-    {
+    /*{
         "label": "Beskrivelse",
         "name": "description_long",
         "options": {
@@ -144,6 +143,6 @@ export const assetsColumn = [
             "filter": true,
             "sort": true,
         }
-    }
+    }*/
 ];
 
