@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "styreportalenv2b"
+  },
+  "targets": {
+    "styreportalenv2b": {
+      "hosting": {
+        "styrearbeid": [
+          "styrearbeid"
+        ]
+      }
+    }
+  }
+}

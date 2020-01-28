@@ -1,0 +1,12 @@
+
+fiks slik at type og variant vises når du åpner redigeringsmodalen 
+
+funksjon som gjer at typane blir lagra når dei blir sortert. 
+
+
+
+Legge til tooltip på drag n drop lista "Dra og slipp instrumenter for å rearrangere"
+
+
+
+

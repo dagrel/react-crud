@@ -1,0 +1,98 @@
+{
+  "dashboard": {
+    "WELCOME": "Welcome to Styreportalen!"
+  },
+  "sidebar": {
+    "WELCOME": "Welcome",
+    "heading": {
+      "HEADER": "Menu",
+      "COMPONENTS": "Components",
+      "MORE": "More"
+    },
+    "nav": {
+      "styrearbeid": {
+        "STYREARBEID": "Styrearbeid",
+        "CASES": "Cases",
+        "MEETINGS": "Meetings",
+        "MESSAGES": "Messages"
+      },
+      "persons": {
+        "PERSONS": "Persons",
+        "MEMBERS": "Members",
+        "PARENTS": "Parents"
+      },
+      "calendar": {
+        "CALENDAR": "Calendar",
+        "SCHEDULEADMIN": "Schedule - admin",
+        "SCHEDULE": "Schedule"
+      },
+      "TEST": "Test"
+    }
+  },
+  "components": {
+    "board": {
+      "BOARD_CALENDAR": "Board calendar"
+    },
+    "meetings":{
+      "MEETING": "Meeting",
+      "MEETINGS": "Meetings",
+      "MEETING_NAME": "Meeting name",
+      "MEETING_TIME": "Meeting time",
+      "ADD_BUTTON": "Add new meeting",
+      "MEETING_MEMBERS": "Meeting members",
+      "MEETING_MEMBERS_EMPTY": "No members have been assigned to this meeting yet",
+      "REMOVE_MEMBER": "Remove member",
+      "ATTENDED": "Attended",
+      "NOT_ATTENDED": "Not attended",
+      "INVITATION_SENT": "Invitation sent",
+      "INVITATION_OPENED": "Opened",
+      "INVITATION_STATUS": "Status",
+      "INVITATION_ATTENDED": "Attended",
+      "ATTENDING": "Attending",
+      "NOT_ATTENDING": "Not attending"
+    },
+    "cases":{
+      "CASE": "Case",
+      "CASES": "Cases",
+      "CASE_NAME": "Case name",
+      "CASE_DESCRIPTION": "Description",
+      "ADD_BUTTON": "Add new case",
+      "GET_CASE": "Get case",
+      "LAST_EDITED": "Last edited",
+      "SAVE_REPORT": "Save report"
+    },
+    "messages":{
+      "MESSAGE": "Message",
+      "MESSAGES": "Messages",
+      "MESSAGE_TITLE": "Title",
+      "MESSAGE_INTRO": "Intro",
+      "MESSAGE_BODY": "Message",
+      "MESSAGE_RECEIVERS": "Receivers",
+      "SEND_BUTTON": "Send message"
+    },
+    "members":{
+      "MEMBER": "Member",
+      "MEMBERS": "Members",
+      "PARENT": "Parent",
+      "PARENTS": "Parents",
+      "PERSON": "Person",
+      "PERSONS": "Persons",
+      "FIRST_NAME": ""
+    },
+    "members_modal": {
+      "ADD_MEMBERS": "Add members",
+      "SELECT_MEMBERS": "Select members",
+      "SEND_INVITATION": "Send invitation",
+      "SEND_INVITATION_CONFIRM": "Are you sure you want to send out an invitation?"
+    }
+  },
+  "utility": {
+    "CREATED": "Created",
+    "SHOW_MORE": "Show more",
+    "SAVE_BUTTON": "Save",
+    "CANCEL_BUTTON": "Cancel",
+    "CLOSE_BUTTON": "Close",
+    "REQUIRED": "Required",
+    "SENT": "Sent"
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "dashboard": {
+    "WELCOME": "Velkommen to Styreportalen!"
+  },
+  "sidebar": {
+    "WELCOME": "Velkommen",
+    "heading": {
+      "HEADER": "Meny",
+      "COMPONENTS": "Komponenter",
+      "MORE": "Mer"
+    },
+    "nav": {
+      "styrearbeid": {
+        "STYREARBEID": "Styrearbeid",
+        "CASES": "Saker",
+        "MEETINGS": "Møter",
+        "MESSAGES": "Meldingssenter"
+      },
+      "persons": {
+        "PERSONS": "Personer",
+        "MEMBERS": "Medlemmer",
+        "PARENTS": "Foresatte"
+      },
+      "calendar": {
+        "CALENDAR": "Kalender",
+        "SCHEDULEADMIN": "Terminliste - admin",
+        "SCHEDULE": "Terminliste"
+      },
+      "TEST": "Test"
+    }
+  },
+  "components": {
+    "board": {
+      "BOARD_CALENDAR": "Styrekalender"
+    },
+    "meetings":{
+      "MEETING": "Møte",
+      "MEETINGS": "Møter",
+      "MEETING_NAME": "Møtenavn",
+      "MEETING_TIME": "Møtetid",
+      "ADD_BUTTON": "Opprett nytt møte",
+      "MEETING_MEMBERS": "Møtedeltakere",
+      "MEETING_MEMBERS_EMPTY": "Ingen deltakere har blit lagt til for dette møtet",
+      "REMOVE_MEMBER": "Fjern møtedeltaker",
+      "ATTENDED": "Møtt",
+      "NOT_ATTENDED": "Ikke møtt",
+      "INVITATION_SENT": "Innkalling sendt",
+      "INVITATION_OPENED": "Lest",
+      "INVITATION_STATUS": "Status",
+      "INVITATION_ATTENDED": "Møtt",
+      "ATTENDING": "Kommer",
+      "NOT_ATTENDING": "Kommer ikke"
+    },
+    "cases":{
+      "CASE": "Sak",
+      "CASES": "Saker",
+      "CASE_NAME": "Saksnavn",
+      "CASE_DESCRIPTION": "Beskrivelse",
+      "ADD_BUTTON": "Opprett sak",
+      "GET_CASE": "Hent sak",
+      "LAST_EDITED": "Sist endret",
+      "SAVE_REPORT": "Lagre referat"
+    },
+    "messages":{
+      "MESSAGE": "Melding",
+      "MESSAGES": "Meldinger",
+      "MESSAGE_TITLE": "Tittel",
+      "MESSAGE_INTRO": "Intro",
+      "MESSAGE_BODY": "Melding",
+      "MESSAGE_RECEIVERS": "Mottakere",
+      "SEND_BUTTON": "Send melding"
+    },
+    "members":{
+      "MEMBER": "Medlem",
+      "MEMBERS": "Medlemmer",
+      "PARENT": "Foresatt",
+      "PARENTS": "Foresatte",
+      "PERSON": "Person",
+      "PERSONS": "Personer",
+      "FIRST_NAME": "Fornavn"
+    },
+    "members_modal": {
+      "ADD_MEMBERS": "Legg til medlemmer",
+      "SELECT_MEMBERS": "Velg medlemmer",
+      "SEND_INVITATION": "Send innkalling",
+      "SEND_INVITATION_CONFIRM": "Er du sikker på at du vil sende en innkalling?"
+    }
+  },
+  "utility": {
+    "CREATED": "Opprettet",
+    "SHOW_MORE": "Vis flere",
+    "SAVE_BUTTON": "Lagre",
+    "CANCEL_BUTTON": "Avbryt",
+    "CLOSE_BUTTON": "Lukk",
+    "REQUIRED": "Påkrevd",
+    "SENT": "Sendt"
+  }
+}

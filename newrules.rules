@@ -1,0 +1,110 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+    //admin = private
+   	match /system {
+    	allow read: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.admin;
+    	allow write: if request.auth.uid != null;
+    }
+    
+    //organizations = check user org map
+    match /organizations/{orgId} {
+    	//request.auth.uid
+    	//in get(/databases/$(database)/documents/users/(request.auth.uid)).data.organizations
+    	allow read: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.organizations.keys().hasAny([orgId]);
+      allow write: if true;
+      
+      //match /{orgData=**} {
+      //  allow read, write: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.organizations.keys().hasAny([orgId]);
+      //  allow write: if true;
+      //}
+      
+      match /groups/{orgData=**} {
+        allow read, write: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.organizations.keys().hasAny([orgId]);
+        allow write: if true;
+        //allow read, write: if request.auth.uid != null;
+      }
+      match /modules/{orgData=**} {
+        allow read, write: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.organizations.keys().hasAny([orgId]);
+        allow write: if true;
+        //allow read, write: if request.auth.uid != null;
+      }
+      match /persons/{orgData=**} {
+        allow read, write: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.organizations.keys().hasAny([orgId]);
+        allow write: if true;
+        //allow read, write: if request.auth.uid != null;
+      }
+      match /projects/{orgData=**} {
+        allow read, write: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.organizations.keys().hasAny([orgId]);
+        allow write: if true;
+        //allow read, write: if request.auth.uid != null;
+      }
+      match /tables/{orgData=**} {
+        allow read, write: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.organizations.keys().hasAny([orgId]);
+        allow write: if true;
+        //allow read, write: if request.auth.uid != null;
+      }
+      match /rooms/{orgData=**} {
+        allow read, write: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.organizations.keys().hasAny([orgId]);
+        allow write: if true;
+        //allow read, write: if request.auth.uid != null;
+      }
+      match /events/{orgData=**} {
+        allow read, write:
+        if resource.data.event_tags.keys().hasAny(
+          get(/databases/$(database)/documents/users/$(request.auth.uid)/styreportalen/$(orgId)).data.event_tags.keys()
+        );
+      }
+    }
+    
+    //users in same org = check user org map
+    match /users/{userId} {
+    	match /notearkiv/{orgId} {
+        //request.auth.uid
+        //allow read: if resource.data.organizations.hasAny(['test', 'test0']);
+        allow read, write: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.organizations.keys().hasAny([orgId]);
+        //allow write: if false;
+      }
+      
+    	//request.auth.uid
+      //allow read: if resource.data.organizations.hasAny(['test', 'test0']);
+      allow read:
+      	if resource.data.organizations.keys().hasAny(
+        	get(/databases/$(database)/documents/users/$(request.auth.uid)).data.organizations.keys()
+        );
+      allow write: if false;
+    }
+    
+    //users = same uid
+    match /users/{userId} {
+    	allow read, write: if request.auth.uid == userId;
+    	match /{userData=**} {
+        allow read, write: if request.auth.uid == userId;
+      }
+    }
+    
+    //statistics = private
+  	match /statistics {
+    	allow read: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.admin;
+    	allow write: if request.auth.uid != null;
+      
+      match /{statData=**} {
+        allow read: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.admin;
+    		allow write: if request.auth.uid != null;
+      }
+    }
+    
+    //errors = private
+  	match /errors {
+    	allow read: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.admin;
+    	allow write: if request.auth.uid != null;
+    }
+    
+    //default = private
+  	match /{document=**} {
+    	allow read: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.admin;
+    	allow write: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.admin;
+      //allow write: if request.auth.uid != null;
+    }
+
+  }
+}
