@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { withNamespaces } from 'react-i18next';
 import ContentWrapper from '../Layout/ContentWrapper';
 import { Row, Col } from 'reactstrap';
-import Assets from './AssetsTable';
 import AssetModal from "./AssetsModal"
-import DragDropTypesList from "./DragDropTypesList"
 import HandleTypes from "./HandleTypes"
 import { DB, OrgKey } from '../Common/firebase';
 import AssetsTable from './AssetsTable';
@@ -41,7 +38,7 @@ class AssetsPage extends Component {
             <ContentWrapper>
                 <div className="content-heading">
                     <div>
-                        Eiendeler
+                        Kontakter
                     </div>
                 </div>
                 
@@ -65,4 +62,4 @@ class AssetsPage extends Component {
 
 }
 
-export default withNamespaces('translations')(AssetsPage);
+export default AssetsPage;

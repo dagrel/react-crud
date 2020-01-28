@@ -5,26 +5,24 @@ const Menu = [
     },
     
     {
-        name: 'Eiendeler',
+        name: 'Uni Economy',
         icon: 'icon-note',
         translate: 'sidebar.nav.persons.ASSETS',
         submenu: [{
-                name: 'Instrumenter',
+                name: 'Kontakter',
                 path: '/instrumenter',
-                translate: 'sidebar.nav.persons.INSTRUMENTS'
             }
         ]
     },
     {
-        name: 'Uni',
+        name: 'Test',
         icon: 'icon-note',
         submenu: [{
                 name: 'Kontakter',
                 path: '/kontakter',
-                translate: 'sidebar.nav.persons.INSTRUMENTS'
             }
         ]
-    },
+    }
 ];
 
 export default Menu;

@@ -11,8 +11,8 @@ export default class AssetsTable extends Component {
     constructor() {
         super();
 
-        this.assetsRef = DB.collection(`organizations/${window.localStorage.getItem(OrgKey)}/assets/instrumentarchive/items`);
-
+        this.assetsRef = DB.collection(`organizations/${window.localStorage.getItem(OrgKey)}/contacts`);
+        
         this.unsubscribeAssets = null;
 
         this.tableData = JSON.parse(window.localStorage.getItem("assets"));
@@ -57,12 +57,12 @@ export default class AssetsTable extends Component {
             assetsObj.key = doc.id;
   
 
-             if(assetsObj.date_scrapped) {
+             /*if(assetsObj.date_scrapped) {
                 assetsObj.date_scrapped = moment(assetsObj.date_scrapped.toDate()).format("DD.MM.YYYY");
              } 
              if(assetsObj.date_bought) {
                 assetsObj.date_bought = moment(assetsObj.date_bought.toDate()).format("DD.MM.YYYY");
-             }
+             }*/
              
               assets.push(assetsObj);
           });
