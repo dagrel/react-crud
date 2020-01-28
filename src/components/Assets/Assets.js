@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ContentWrapper from '../Layout/ContentWrapper';
 import { Row, Col } from 'reactstrap';
 import AssetModal from "./AssetsModal"
-import HandleTypes from "./HandleTypes"
 import { DB, OrgKey } from '../Common/firebase';
 import AssetsTable from './AssetsTable';
 
@@ -45,7 +44,6 @@ class AssetsPage extends Component {
                 <Row>
                 <AssetModal itemId = {0}  /> 
                 
-                <HandleTypes  />
                 </Row>
                 <Row>
                     <Col>

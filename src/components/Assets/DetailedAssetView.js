@@ -6,7 +6,6 @@ import { DB, OrgKey } from '../Common/firebase';
 import 'loaders.css/loaders.css';
 import * as moment from 'moment';
 import AssetModal from "./AssetsModal"
-import ServiceHistoryModal from "./ServiceHistoryModal"
 
 export default class DetailedAssetView extends Component {
 

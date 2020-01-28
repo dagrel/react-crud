@@ -82,7 +82,7 @@ export const assetsColumn = [
         "label": "Rolle",
         "name": "Role",
         "options": {
-            "filter": false,
+            "filter": true,
             "sort": true
         }
     },

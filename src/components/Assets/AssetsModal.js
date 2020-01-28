@@ -355,10 +355,6 @@ export default class AssetModal extends Component {
                                         <span className="invalid-feedback">Må fylles ut</span>
                                     </Col>
                                 </div>
-                            
-                                
-                               
-
                                 
                             </Col>
                       </Row>
@@ -381,13 +377,13 @@ export default class AssetModal extends Component {
                             </DropdownItem>
                             
                             <DropdownItem>
-                                <span className="text-warning">Slett instrument</span>
+                                <span className="text-warning">Slett kontakt</span>
                             </DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
                 </div>
                 <Modal isOpen={this.state.modalAsset} className="modal-xl" toggle={this.toggleModalAsset.bind(this)}>
-                    <ModalHeader toggle={this.toggleModalAsset.bind(this)}>Instrument</ModalHeader>
+                    <ModalHeader toggle={this.toggleModalAsset.bind(this)}>Kontakter</ModalHeader>
                     <ModalBody>
                         {modalForm(this.state.modalAssetLoading, this)}
                     </ModalBody>
