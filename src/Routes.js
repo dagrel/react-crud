@@ -169,11 +169,6 @@ const Routes = ({ location }) => {
     const currentKey = location.pathname.split('/')[1] || '/';
     const timeout = { enter: 500, exit: 500 };
 
-    // Animations supported
-    //      'rag-fadeIn'
-    //      'rag-fadeInRight'
-    //      'rag-fadeInLeft'
-
     const animationName = 'rag-fadeIn'
 
     if(listofPages.indexOf(location.pathname) > -1) {
@@ -217,112 +212,7 @@ const Routes = ({ location }) => {
 
                                 {/*<Route path="/detaljer/:itemId" component={waitFor(UniContactsDetails)}/>*/}
 
-                                {/*
-                                <Route path="/testingassets" component={waitFor(TestingAssets)}/>
-                                <Route path="/styrearbeid" component={waitFor(Styrearbeid)}/>
-                                <Route path="/sak/:caseId" component={waitFor(Case)}/>
-                                <Route path="/saker" component={waitFor(Cases)}/>
-                                <Route path="/mote/:meetingId" component={waitFor(Meeting)}/>
-                                <Route path="/moter" component={waitFor(Meetings)}/>
-                                <Route path="/test" component={waitFor(Test)}/>
-
-                                <Route path="/meldingssenter" component={waitFor(Messages)}/>
                                 
-                                <Route path="/Person/:personId" component={waitFor(Person)}/>
-                                
-                                <Route path="/personer" component={waitFor(Persons)}/>
-                                <Route path="/medlemmer" component={waitFor(Members)}/>
-                                <Route path="/foresatte" component={waitFor(Parents)}/>
-
-                                <Route path="/terminliste" component={waitFor(Events)}/>
-                                <Route path="/aktivitet/:eventId" component={waitFor(Event)}/>
-                                <Route path="/terminliste-admin" component={waitFor(EventsAdmin)}/>
-                                <Route path="/kalender" component={waitFor(Calendar)}/>
-                                
-                                {/*Dashboard}
-                                <Route path="/dashboardv1" component={waitFor(DashboardV1)}/>
-                                <Route path="/dashboardv2" component={waitFor(DashboardV2)}/>
-                                <Route path="/dashboardv3" component={waitFor(DashboardV3)}/>
-
-                                {/*Widgets}
-                                <Route path="/widgets" component={waitFor(Widgets)}/>
-
-                                {/*Elements}
-                                <Route path="/buttons" component={waitFor(Buttons)}/>
-                                <Route path="/notifications" component={waitFor(Notifications)}/>
-                                <Route path="/sweetalert" component={waitFor(SweetAlert)}/>
-                                <Route path="/carousel" component={waitFor(BsCarousel)}/>
-                                <Route path="/spinners" component={waitFor(Spinner)}/>
-                                <Route path="/dropdown" component={waitFor(DropdownAnimation)}/>
-                                <Route path="/nestable" component={waitFor(Nestable)}/>
-                                <Route path="/sortable" component={waitFor(Sortable)}/>
-                                <Route path="/cards" component={waitFor(Cards)}/>
-                                <Route path="/grid" component={waitFor(Grid)}/>
-                                <Route path="/grid-masonry" component={waitFor(GridMasonry)}/>
-                                <Route path="/typography" component={waitFor(Typography)}/>
-                                <Route path="/icons-font" component={waitFor(FontIcons)}/>
-                                <Route path="/icons-weather" component={waitFor(WeatherIcons)}/>
-                                <Route path="/colors" component={waitFor(Colors)}/>
-
-                                {/*Forms}
-                                <Route path="/form-standard" component={waitFor(FormStandard)}/>
-                                <Route path="/form-extended" component={waitFor(FormExtended)}/>
-                                <Route path="/form-validation" component={waitFor(FormValidation)}/>
-                                <Route path="/form-wizard" component={waitFor(FormWizard)}/>
-                                <Route path="/form-upload" component={waitFor(FormUpload)}/>
-                                <Route path="/form-cropper" component={waitFor(FormCropper)}/>
-
-                                {/*Charts}
-                                <Route path="/chart-flot" component={waitFor(ChartFlot)}/>
-                                <Route path="/chart-radial" component={waitFor(ChartRadial)}/>
-                                <Route path="/chart-chartjs" component={waitFor(ChartChartJS)}/>
-                                <Route path="/chart-morris" component={waitFor(ChartMorris)}/>
-                                <Route path="/chart-chartist" component={waitFor(ChartChartist)}/>
-
-                                {/*Table}
-                                <Route path="/table-standard" component={waitFor(TableStandard)}/>
-                                <Route path="/table-extended" component={waitFor(TableExtended)}/>
-                                <Route path="/table-datatable" component={waitFor(Datatable)}/>
-                                <Route path="/table-datagrid" component={waitFor(DataGrid)}/>
-
-                                {/*Maps}
-                                <Route path="/map-google" component={waitFor(MapsGoogle)}/>
-                                <Route path="/map-vector" component={waitFor(MapsVector)}/>
-
-                                {/*Extras}
-                                <Route path="/mailbox" component={waitFor(Mailbox)}/>
-                                <Route path="/timeline" component={waitFor(Timeline)}/>
-                                <Route path="/calendar" component={waitFor(Calendar1)}/>
-                                <Route path="/invoice" component={waitFor(Invoice)}/>
-                                <Route path="/search" component={waitFor(Search)}/>
-                                <Route path="/todo" component={waitFor(Todo)}/>
-                                <Route path="/profile" component={waitFor(Profile)}/>
-                                <Route path="/ecommerce-orders" component={waitFor(EcommerceOrder)}/>
-                                <Route path="/ecommerce-order-view" component={waitFor(EcommerceOrderView)}/>
-                                <Route path="/ecommerce-products" component={waitFor(EcommerceProduct)}/>
-                                <Route path="/ecommerce-product-view" component={waitFor(EcommerceProductView)}/>
-                                <Route path="/ecommerce-checkout" component={waitFor(EcommerceCheckout)}/>
-                                <Route path="/blog-list" component={waitFor(BlogList)}/>
-                                <Route path="/blog-post" component={waitFor(BlogPost)}/>
-                                <Route path="/blog-articles" component={waitFor(BlogArticle)}/>
-                                <Route path="/blog-article-view" component={waitFor(BlogArticleView)}/>
-                                <Route path="/bug-tracker" component={waitFor(BugTracker)}/>
-                                <Route path="/contact-details" component={waitFor(ContactDetails)}/>
-                                <Route path="/contacts" component={waitFor(Contacts)}/>
-                                <Route path="/faq" component={waitFor(Faq)}/>
-                                <Route path="/file-manager" component={waitFor(FileManager)}/>
-                                <Route path="/followers" component={waitFor(Followers)}/>
-                                <Route path="/help-center" component={waitFor(HelpCenter)}/>
-                                <Route path="/plans" component={waitFor(Plans)}/>
-                                <Route path="/project-details" component={waitFor(ProjectDetails)}/>
-                                <Route path="/projects" component={waitFor(Projects)}/>
-                                <Route path="/settings" component={waitFor(Settings)}/>
-                                <Route path="/social-board" component={waitFor(SocialBoard)}/>
-                                <Route path="/team-viewer" component={waitFor(TeamViewer)}/>
-                                <Route path="/vote-links" component={waitFor(VoteLinks)}/>
-
-                                <Route path="/forum" component={waitFor(ForumHome)}/>
-                                */}
                                 <Redirect to="/styrearbeid"/>
                             </Switch>
                         </Suspense>
