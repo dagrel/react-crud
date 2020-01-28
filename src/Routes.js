@@ -14,8 +14,19 @@ import BasePage from './components/Layout/BasePage';
 
 /* Used to render a lazy component with react-router */
 const waitFor = Tag => props => <Tag {...props}/>;
-
+const Assets = lazy(() => import('./components/Assets/Assets'));
 const DetailedAssetView = lazy(() => import("./components/Assets/DetailedAssetView"));
+const Login = lazy(() => import('./components/Pages/Login'));
+const Logout = lazy(() => import('./components/Pages/Logout'));
+const Register = lazy(() => import('./components/Pages/Register'));
+const Recover = lazy(() => import('./components/Pages/Recover'));
+const Lock = lazy(() => import('./components/Pages/Lock'));
+const NotFound = lazy(() => import('./components/Pages/NotFound'));
+const Error500 = lazy(() => import('./components/Pages/Error500'));
+const Maintenance = lazy(() => import('./components/Pages/Maintenance'));
+
+
+/*
 const TestingAssets = lazy(() => import("./components/Assets/TestingAssets"));
 const Styrearbeid = lazy(() => import('./components/Styrearbeid/Styrearbeid'));
 const Case = lazy(() => import('./components/Case/Case'));
@@ -33,7 +44,7 @@ const Parents = lazy(() => import('./components/Persons/Parents'));
 
 
 const Events = lazy(() => import('./components/Events/Events'));
-const Assets = lazy(() => import('./components/Assets/Assets'));
+
 const Event = lazy(() => import('./components/Event/Event'));
 const EventsAdmin = lazy(() => import('./components/Events/EventsAdmin'));
 const Calendar = lazy(() => import('./components/Events/Calendar'));
@@ -81,14 +92,7 @@ const FormWizard = lazy(() => import('./components/Forms/FormWizard'));
 const FormUpload = lazy(() => import('./components/Forms/FormUpload'));
 const FormCropper = lazy(() => import('./components/Forms/FormCropper'));
 
-const Login = lazy(() => import('./components/Pages/Login'));
-const Logout = lazy(() => import('./components/Pages/Logout'));
-const Register = lazy(() => import('./components/Pages/Register'));
-const Recover = lazy(() => import('./components/Pages/Recover'));
-const Lock = lazy(() => import('./components/Pages/Lock'));
-const NotFound = lazy(() => import('./components/Pages/NotFound'));
-const Error500 = lazy(() => import('./components/Pages/Error500'));
-const Maintenance = lazy(() => import('./components/Pages/Maintenance'));
+
 
 const Mailbox = lazy(() => import('./components/Extras/Mailbox'));
 const Timeline = lazy(() => import('./components/Extras/Timeline'));
@@ -124,7 +128,7 @@ const BlogArticle = lazy(() => import('./components/Blog/BlogArticles'));
 const BlogArticleView = lazy(() => import('./components/Blog/BlogArticleView'));
 
 const ForumHome = lazy(() => import('./components/Forum/ForumHome'));
-
+*/
 
 // List of routes that uses the page layout
 // listed here to Switch between layouts
@@ -205,6 +209,11 @@ const Routes = ({ location }) => {
                             <Switch location={location}>
                             
                                 <Route path="/detaljer/:itemId" component={waitFor(DetailedAssetView)}/>
+                                <Route path="/instrumenter" component={waitFor(Assets)}/>
+
+                                {/*<Route path="/detaljer/:itemId" component={waitFor(UniContactsDetails)}/>*/}
+
+                                {/*
                                 <Route path="/testingassets" component={waitFor(TestingAssets)}/>
                                 <Route path="/styrearbeid" component={waitFor(Styrearbeid)}/>
                                 <Route path="/sak/:caseId" component={waitFor(Case)}/>
@@ -214,9 +223,7 @@ const Routes = ({ location }) => {
                                 <Route path="/test" component={waitFor(Test)}/>
 
                                 <Route path="/meldingssenter" component={waitFor(Messages)}/>
-                                <Route path="/instrumenter" component={waitFor(Assets)}/>
-                                {/*<Route path="/instrumentinfo/:instrumentId" component={waitFor(AssetDetails)}/> */}
-
+                                
                                 <Route path="/Person/:personId" component={waitFor(Person)}/>
                                 
                                 <Route path="/personer" component={waitFor(Persons)}/>
@@ -227,7 +234,7 @@ const Routes = ({ location }) => {
                                 <Route path="/aktivitet/:eventId" component={waitFor(Event)}/>
                                 <Route path="/terminliste-admin" component={waitFor(EventsAdmin)}/>
                                 <Route path="/kalender" component={waitFor(Calendar)}/>
-                                {/*
+                                
                                 {/*Dashboard}
                                 <Route path="/dashboardv1" component={waitFor(DashboardV1)}/>
                                 <Route path="/dashboardv2" component={waitFor(DashboardV2)}/>
