@@ -66,7 +66,7 @@ const Menu = [
         icon: 'icon-note',
         submenu: [{
                 name: 'Kontakter',
-                path: '/instrumenter',
+                path: '/kontakter',
                 translate: 'sidebar.nav.persons.INSTRUMENTS'
             }
         ]

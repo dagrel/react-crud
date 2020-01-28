@@ -16,6 +16,9 @@ import BasePage from './components/Layout/BasePage';
 const waitFor = Tag => props => <Tag {...props}/>;
 const Assets = lazy(() => import('./components/Assets/Assets'));
 const DetailedAssetView = lazy(() => import("./components/Assets/DetailedAssetView"));
+const Contacts = lazy(() => import('./components/Uni/Contacts'));
+
+
 const Login = lazy(() => import('./components/Pages/Login'));
 const Logout = lazy(() => import('./components/Pages/Logout'));
 const Register = lazy(() => import('./components/Pages/Register'));
@@ -210,6 +213,7 @@ const Routes = ({ location }) => {
                             
                                 <Route path="/detaljer/:itemId" component={waitFor(DetailedAssetView)}/>
                                 <Route path="/instrumenter" component={waitFor(Assets)}/>
+                                <Route path="/kontakter" component={waitFor(Contacts)}/>
 
                                 {/*<Route path="/detaljer/:itemId" component={waitFor(UniContactsDetails)}/>*/}
 
