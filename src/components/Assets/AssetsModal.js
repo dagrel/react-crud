@@ -17,8 +17,7 @@ export default class AssetModal extends Component {
     constructor(props) {
         super(props);
 
-        this.assetRef = DB.doc(`organizations/${window.localStorage.getItem(OrgKey)}/assets/instrumentarchive/items/${props.itemId}`)
-        this.typesRef = DB.collection(`organizations/${window.localStorage.getItem(OrgKey)}/assets/instrumentarchive/types`)
+        this.assetRef = DB.doc(`/uni/qG7hSy1hnz9RpiIZ1u1u/contacts/${props.itemId}`)
 
         this.unsubscribeAsset = null;
         this.unsubscribeTypes = null;
@@ -27,35 +26,26 @@ export default class AssetModal extends Component {
             assetId: props.itemId,
             modalAsset: false,
             formAsset: {
-                title: '',
-                brand: "",
-                serialnumber: "",
-                description_long: "",
-                description_technical: "",
-                date_scrapped: moment(new Date()),
-                date_bought: moment(new Date()),
-                number: 0,
-                type: "",
+                ID: "",
+                CreatedBy: "",
+                InfoID: "",
+                Comment: "",
+                ParentBusinessRelationID: "",
+                Role: "",
                 variant: "",
-                current_value: "",
-                original_price: "",
+                StatusCode: "",
+                UpdatedBy: "",
                 deleted: false
             },
-
-            
-            intial_choice_array: [], // ddown 1
-            second_choice_array: [], // ddown 2
         };
     }
 
     componentDidMount()  {
         this.unsubscribeAsset = this.assetRef.onSnapshot(this.onAssetUpdate);
-        this.unsubscribeTypes = this.typesRef.onSnapshot(this.onTypesUpdate);
     }
     
     componentWillUnmount() {
         this.unsubscribeAsset();
-        this.unsubscribeTypes();
     }
     
     validateOnChange = event => {
@@ -77,93 +67,13 @@ export default class AssetModal extends Component {
         });
     }
 
-    // funksjon for valg av kjøpsdato
-    dateBoughtOnChange = value => {
-        let formData = this.state.formAsset;
-        formData.date_bought = value;
-        this.setState({
-            formEvent: formData
-        });
-    }
-
-    // funksjon for valg av kondemnert dato
-    dateScrappedOnChange = value => {
-        let formData = this.state.formAsset;
-        formData.date_scrapped = value;
-        this.setState({
-            formEvent: formData
-        });
-    }
-
-    ChoiceOnChange = value => {
-        var tstate = this;
-        var variantRef = DB.collection(`organizations/${window.localStorage.getItem(OrgKey)}/assets/instrumentarchive/types/${value.value}/variant`);
-        variantRef.get().then(function(querySnapshot) {
-            let variant = [];
-        
-            querySnapshot.forEach((doc) => {
-              
-              var variantObj = doc.data();
-              var dropDownType = {label: variantObj.title, value: doc.id}
-              variantObj.label = doc.data().title;
-              variantObj.value = doc.id
-              variantObj.key = doc.id;
-              variant.push(dropDownType);
-            });
-          tstate.setState({
-              second_choice_array: variant
-          })});
-        let formAsset = this.state.formAsset;
-        formAsset.type = value.value;
-        formAsset.type_label = value.label;
-        tstate.setState({
-            formAsset: formAsset
-        });
-    }
-
-    variantOnChange = value => {
-        var tstate = this;
-
-        let formAsset = this.state.formAsset;
-        formAsset.variant = value.value;
-        formAsset.variant_label = value.label;
-        tstate.setState({
-            formAsset: formAsset
-        });
-    }
-
     onAssetUpdate = (querySnapshot) => {
         let assetObj = querySnapshot.data();
         if(querySnapshot.exists) {
-            if(assetObj.date_scrapped) {
-                assetObj.date_scrapped = moment(assetObj.date_scrapped.toDate()).format("DD.MM.YYYY");
-             } 
-             if(assetObj.date_bought) {
-                assetObj.date_bought = moment(assetObj.date_bought.toDate()).format("DD.MM.YYYY");
-             }
-             
             this.setState({
                 asset: assetObj,
             }); 
         }
-    }
-
-    onTypesUpdate = (querySnapshot) => {
-        let types = [];
-        
-          querySnapshot.forEach((doc) => {
-            
-            var typesObj = doc.data();
-            var dropDownType = {label: typesObj.title, value: doc.id}
-            typesObj.label = doc.data().title;
-            typesObj.value = doc.id
-            typesObj.key = doc.id;
-            types.push(dropDownType);
-          });
-        this.setState({
-            types,
-            intial_choice_array: types
-        });
     }
 
     onDelete = () => {
@@ -176,64 +86,44 @@ export default class AssetModal extends Component {
     onSubmitEvent = e => {
         const form = e.target;
         let hasError = false;
-        var date_scrapped = "";
-        var date_bought = "";
+        
 
         if(!hasError){
-            if(this.state.formAsset.date_scrapped) {
-                date_scrapped = firebaseTimestamp.fromDate(moment(this.state.formAsset.date_scrapped, "YYYY.MM.DD").toDate())
-            }
 
-            if(this.state.formAsset.date_bought) {
-                date_bought = firebaseTimestamp.fromDate(moment(this.state.formAsset.date_bought, "YYYY.MM.DD").toDate())
-            }
-
-            if(this.state.formAsset.title) {
+            if(this.state.formAsset.ID) {
                 let tstate = this;
                 this.setState({
                     modalAssetLoading: true
             });
 
             let assetObj = {
-                title: this.state.formAsset.title,
-                brand: this.state.formAsset.brand,
-                serialnumber: this.state.formAsset.serialnumber,
-                description_long: this.state.formAsset.description_long,
-                description_technical: this.state.formAsset.description_technical,
-                date_scrapped: date_scrapped,
-                date_bought: date_bought,
-                // number
-                type: this.state.formAsset.type,
-                type_label: this.state.formAsset.type_label,
-                variant: this.state.formAsset.variant,
-                variant_label: this.state.formAsset.variant_label,
-                current_value: this.state.formAsset.current_value,
-                original_price: this.state.formAsset.original_price,
+                ID: this.state.formAsset.ID,
+                CreatedBy: this.state.formAsset.CreatedBy,
+                InfoID: this.state.formAsset.InfoID,
+                Comment: this.state.formAsset.Comment,
+                ParentBusinessRelationID: this.state.formAsset.ParentBusinessRelationID,
+                Role: this.state.formAsset.Role,
+                StatusCode: this.state.formAsset.StatusCode,
+                UpdatedBy: this.state.formAsset.UpdatedBy,
                 created: firebaseTimestamp.fromDate(new Date()),
-                altered: firebaseTimestamp.fromDate(new Date()),
+                altered: firebaseTimestamp.fromDate(new Date()), // flytt
             }
             if (this.state.assetId) {
-            DB.collection(`organizations/${window.localStorage.getItem(OrgKey)}/assets/instrumentarchive/items`).doc(this.state.assetId).set(assetObj).then(function() {
+            DB.collection(`/uni/qG7hSy1hnz9RpiIZ1u1u/contacts`).doc(this.state.assetId).set(assetObj).then(function() {
                
 
                 tstate.setState({
                     modalAssetLoading: false,
                     modalAsset: false,
                     formAsset: {
-                        title: '',
-                        brand: "",
-                        serialnumber: "",
-                        description_long: "",
-                        description_technical: "",
-                        date_scrapped: "",
-                        date_bought: "",
-                       // number: "",
-                        type: "",
-                        type_label: "",
-                        variant: "",
-                        variant_label: "",
-                        current_value: "",
-                        original_price: ""
+                        ID: '',
+                        CreatedBy: "",
+                        InfoID: "",
+                        Comment: "",
+                        ParentBusinessRelationID: "",
+                        Role: "",
+                        StatusCode: "",
+                        UpdatedBy: ""
                     }
                 });
             }).catch(err => {
@@ -246,26 +136,20 @@ export default class AssetModal extends Component {
             });
         
         }else{
-            DB.collection(`organizations/${window.localStorage.getItem(OrgKey)}/assets/instrumentarchive/items`).doc().set(assetObj).then(function() {
+            DB.collection(`/uni/qG7hSy1hnz9RpiIZ1u1u/contacts`).doc().set(assetObj).then(function() {
 
                 tstate.setState({
                     modalAssetLoading: false,
                     modalAsset: false,
                     formAsset: {
-                        title: '',
-                        brand: "",
-                        serialnumber: "",
-                        description_long: "",
-                        description_technical: "",
-                        date_scrapped: "",
-                        date_bought: "",
-                       // number: "",
-                        type: "",
-                        type_label: "",
-                        variant: "",
-                        variant_label: "",
-                        current_value: "",
-                        original_price: ""
+                        ID: '',
+                        CreatedBy: "",
+                        InfoID: "",
+                        Comment: "",
+                        Role: "",
+                        ParentBusinessRelationID: "",
+                        StatusCode: "",
+                        UpdatedBy: ""
                     }
                 });
             }).catch(err => {
@@ -300,38 +184,28 @@ export default class AssetModal extends Component {
         if(this.state.asset) {
             this.setState(prevState => ({
                 formAsset: {
-                    title: this.state.asset.title,
-                    brand: this.state.asset.brand,
-                    serialnumber: this.state.asset.serialnumber,
-                    description_long: this.state.asset.description_long,
-                    description_technical: this.state.asset.description_technical,
-                    date_scrapped: this.state.asset.date_scrapped,
-                    date_bought: this.state.asset.date_bought,
-                    //number: 
-                    type: this.state.asset.type,
-                    type_label: this.state.asset.type_label,
-                    variant: this.state.asset.variant,
-                    variant_label: this.state.asset.variant_label,
-                    current_value: this.state.asset.current_value,
-                    original_price: this.state.asset.original_price
+                    ID: this.state.asset.ID,
+                    CreatedBy: this.state.asset.CreatedBy,
+                    InfoID: this.state.asset.InfoID,
+                    ParentBusinessRelationID: this.state.asset.ParentBusinessRelationID,
+                    Comment: this.state.asset.Comment,
+                    Role: this.state.asset.Role,
+                    StatusCode: this.state.asset.StatusCode,
+                    UpdatedBy: this.state.asset.UpdatedBy
                 },
                 modalAsset: !prevState.modalAsset
             }));
         } else {
         this.setState(prevState => ({
             formAsset: {
-                title: '',
-                brand: "",
-                serialnumber: "",
-                description_long: "",
-                description_technical: "",
-                date_scrapped: "",
-                date_bought: "",
-                //number: "",
-                type: "",
-                variant: "",
-                current_value: "",
-                original_price: ""
+                ID: '',
+                CreatedBy: "",
+                InfoID: "",
+                Comment: "",
+                ParentBusinessRelationID: "",
+                Role: "",
+                StatusCode: "",
+                UpdatedBy: ""
             },
             modalAsset: !prevState.modalAsset
         }));
@@ -359,121 +233,95 @@ export default class AssetModal extends Component {
                         <Col lg="4">  {/* Fikser slik at man får fleire kolonner, start fra venstre */}
                             <div className="col1">
                                 <div className="form-group row align-items-center">
-                                    <label className="col-md-4 col-form-label">Tittel</label>
+                                    <label className="col-md-4 col-form-label">ID</label>
                                     <Col md={ 6 }>
                                         <Input type="text"
-                                            name="title"
-                                            invalid={tstate.hasError('formAsset','title','required')}
+                                            name="ID"
+                                            invalid={tstate.hasError('formAsset','ID','required')}
                                             onChange={tstate.validateOnChange.bind(tstate)}
                                             data-validate='["required"]'
-                                            value={tstate.state.formAsset.title}
+                                            value={tstate.state.formAsset.ID}
                                         />
                                         <span className="invalid-feedback">Må fylles ut</span>
                                     </Col>
                                 </div>
                             
                                 <div className="form-group row align-items-center">
-                                    <label className="col-md-4 col-form-label">Merke</label>
+                                    <label className="col-md-4 col-form-label">Opprettet av</label>
                                     <Col md={ 6 }>
                                         <Input type="text"
-                                            name="brand"
-                                            invalid={tstate.hasError('formAsset','brand','required')}
+                                            name="CreatedBy"
+                                            invalid={tstate.hasError('formAsset','CreatedBy','required')}
                                             onChange={tstate.validateOnChange.bind(tstate)}
                                             data-validate='["required"]'
-                                            value={tstate.state.formAsset.brand}
+                                            value={tstate.state.formAsset.CreatedBy}
                                         />
                                         <span className="invalid-feedback">Må fylles ut</span>
                                     </Col>
                                 </div>
 
                                 <div className="form-group row align-items-center">
-                                    <label className="col-md-4 col-form-label">Serienummer</label>
+                                    <label className="col-md-4 col-form-label">Info ID</label>
                                     <Col md={ 6 }>
                                         <Input type="text"
-                                            name="serialnumber"
-                                            invalid={tstate.hasError('formAsset','serialnumber','required')}
+                                            name="InfoID"
+                                            invalid={tstate.hasError('formAsset','InfoID','required')}
                                             onChange={tstate.validateOnChange.bind(tstate)}
                                             data-validate='["required"]'
-                                            value={tstate.state.formAsset.serialnumber}
+                                            value={tstate.state.formAsset.InfoID}
                                         />
                                         <span className="invalid-feedback">Må fylles ut</span>
                                     </Col>
                                 </div>
 
-                            <div className="form-group row align-items-center">
-                                    <label className="col-md-4 col-form-label">Beskrivelse</label>
-                                    <Col md={ 6 }>
-                                        <Input type="textarea"
-                                            name="description_long"
-                                            invalid={tstate.hasError('formAsset','description_long','required')}
-                                            onChange={tstate.validateOnChange.bind(tstate)}
-                                            data-validate='["required"]'
-                                            value={tstate.state.formAsset.description_long}
-                                        />
-                                        <span className="invalid-feedback">Må fylles ut</span>
-                                    </Col>
-                                </div>
                             
-                                <div className="form-group row align-items-center">
-                                    <label className="col-md-4 col-form-label">Teknisk beskrivelse</label>
-                                    <Col md={ 6 }>
-                                        <Input type="textarea"
-                                            name="description_technical"
-                                            invalid={tstate.hasError('formAsset','description_technical','required')}
-                                            onChange={tstate.validateOnChange.bind(tstate)}
-                                            data-validate='["required"]'
-                                            value={tstate.state.formAsset.description_technical}
-                                        />
-                                        <span className="invalid-feedback">Må fylles ut</span>
-                                    </Col>
-                                </div>
                             </div>
                         </Col>
 
                         { /* kolonne 2 */ }
                         <Col lg={ 4 }>
-                                
-                                    <div className="form-group row align-items-center">
-                                        <label className="col-md-4 col-form-label">Verdi</label>
-                                        <Col md={ 6 }>
-                                            <Input type="text"
-                                                name="current_value"
-                                                invalid={tstate.hasError('formAsset','current_value','required')}
-                                                onChange={tstate.validateOnChange.bind(tstate)}
-                                                data-validate='["required"]'
-                                                value={tstate.state.formAsset.current_value}
-                                            />
-                                            <span className="invalid-feedback">Må fylles ut</span>
-                                        </Col>
-                                    </div>
-                                
-                                    <div className="form-group row align-items-center">
-                                    <label className="col-md-4 col-form-label">Original pris</label>
-                                    <Col md={ 6 }>
-                                        <Input type="text"
-                                            name="original_price"
-                                            invalid={tstate.hasError('formAsset','original_price','required')}
-                                            onChange={tstate.validateOnChange.bind(tstate)}
-                                            data-validate='["required"]'
-                                            value={tstate.state.formAsset.original_price}
-                                        />
-                                        <span className="invalid-feedback">Må fylles ut</span>
-                                    </Col>
-                                </div>
-                            
-                                <div className="form-group row align-items-center">
-                                    <label className="col-md-4 col-form-label">Dato kjøpt</label>
-                                        <Col md={ 6 }>
-                                        <Datetime
-                                            inputProps={{ name: 'date_bought' }}
-                                            onChange={tstate.dateBoughtOnChange.bind(tstate)}
-                                            value={tstate.state.formAsset.date_bought}
-                                            locale="nb"
-                                            dateFormat="DD.MM.YYYY" timeFormat={false}
-                                            />
-                                        <span className="invalid-feedback">Må fylles ut</span>
-                                        </Col>
-                                </div>
+
+                            <div className="form-group row align-items-center">
+                                <label className="col-md-4 col-form-label">Rolle</label>
+                                <Col md={ 6 }>
+                                    <Input type="text"
+                                        name="Role"
+                                        invalid={tstate.hasError('formAsset','Role','required')}
+                                        onChange={tstate.validateOnChange.bind(tstate)}
+                                        data-validate='["required"]'
+                                        value={tstate.state.formAsset.Role}
+                                    />
+                                    <span className="invalid-feedback">Må fylles ut</span>
+                                </Col>
+                            </div>
+                        
+                            <div className="form-group row align-items-center">
+                                <label className="col-md-4 col-form-label">Status kode</label>
+                                <Col md={ 6 }>
+                                    <Input type="text"
+                                        name="StatusCode"
+                                        invalid={tstate.hasError('formAsset','StatusCode','required')}
+                                        onChange={tstate.validateOnChange.bind(tstate)}
+                                        data-validate='["required"]'
+                                        value={tstate.state.formAsset.StatusCode}
+                                    />
+                                    <span className="invalid-feedback">Må fylles ut</span>
+                                </Col>
+                            </div>
+                        
+                            <div className="form-group row align-items-center">
+                            <label className="col-md-4 col-form-label">Oppdatert av</label>
+                            <Col md={ 6 }>
+                                <Input type="text"
+                                    name="UpdatedBy"
+                                    invalid={tstate.hasError('formAsset','UpdatedBy','required')}
+                                    onChange={tstate.validateOnChange.bind(tstate)}
+                                    data-validate='["required"]'
+                                    value={tstate.state.formAsset.UpdatedBy}
+                                />
+                                <span className="invalid-feedback">Må fylles ut</span>
+                            </Col>
+                        </div>
                             
                         </Col>
 
@@ -481,50 +329,37 @@ export default class AssetModal extends Component {
                             <Col lg={ 4 }>
 
                             <div className="form-group row align-items-center">
-                                    <label className="col-md-5 col-form-label">Dato kondemnert</label>
-                                    <Col md={ 6 }>
-                                        <Datetime 
-                                            inputProps={{ name: 'date_scrapped' }}
-                                            onChange={tstate.dateScrappedOnChange.bind(tstate)}
-                                            value={tstate.state.formAsset.date_scrapped}
-                                            locale="nb"
-                                            dateFormat="DD.MM.YYYY" timeFormat={false}
-                                            />
-                                        <span className="invalid-feedback">Må fylles ut</span>
-                                        </Col>
-                                </div>
+                                <label className="col-md-4 col-form-label">Selskapsrelasjon</label>
+                                <Col md={ 6 }>
+                                    <Input type="text"
+                                        name="ParentBusinessRelationID"
+                                        invalid={tstate.hasError('formAsset','ParentBusinessRelationID','required')}
+                                        onChange={tstate.validateOnChange.bind(tstate)}
+                                        data-validate='["required"]'
+                                        value={tstate.state.formAsset.ParentBusinessRelationID}
+                                    />
+                                    <span className="invalid-feedback">Må fylles ut</span>
+                            </Col>
+                        </div>
 
-                                <div className="form-group row align-items-center">
-                                    <label className="col-md-5 col-form-label">Instrument type</label>
+                            <div className="form-group row align-items-center">
+                                    <label className="col-md-4 col-form-label">Kommentar</label>
                                     <Col md={ 6 }>
-                                        <Select
-                                            name="type" // må ta inn her
-                                            invalid={tstate.hasError('formAsset','type','required')}
-                                            onChange={tstate.ChoiceOnChange.bind(tstate)} 
+                                        <Input type="textarea"
+                                            name="Comment"
+                                            invalid={tstate.hasError('formAsset','Comment','required')}
+                                            onChange={tstate.validateOnChange.bind(tstate)}
                                             data-validate='["required"]'
-                                            isMulti={false}
-                                            options={tstate.state.intial_choice_array}
-                                            value={{label: tstate.state.formAsset.type_label, value: tstate.state.formAsset.type}}
+                                            value={tstate.state.formAsset.Comment}
                                         />
                                         <span className="invalid-feedback">Må fylles ut</span>
                                     </Col>
                                 </div>
+                            
+                                
+                               
 
-                                <div className="form-group row align-items-center">
-                                    <label className="col-md-5 col-form-label">Instrument variant</label>
-                                    <Col md={ 6 }>
-                                        <Select
-                                            name="variant"
-                                            invalid={tstate.hasError('formAsset','variant','required')}
-                                            onChange={tstate.variantOnChange.bind(tstate)}
-                                            data-validate='["required"]'
-                                            isMulti={false}
-                                            options={tstate.state.second_choice_array}
-                                            value={{label: tstate.state.formAsset.variant_label, value: tstate.state.formAsset.variant}}
-                                        />
-                                        <span className="invalid-feedback">Må fylles ut</span>
-                                    </Col>
-                                </div>
+                                
                             </Col>
                       </Row>
                     </form>

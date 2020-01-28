@@ -7,14 +7,13 @@ import 'loaders.css/loaders.css';
 import * as moment from 'moment';
 import AssetModal from "./AssetsModal"
 import ServiceHistoryModal from "./ServiceHistoryModal"
-import MUIDataTable from "mui-datatables";
 
 export default class DetailedAssetView extends Component {
 
     constructor(props) {
         super();
 
-        this.assetRef = DB.doc(`organizations/${window.localStorage.getItem(OrgKey)}/assets/instrumentarchive/items/${props.match.params.itemId}`);
+        this.assetRef = DB.doc(`/uni/qG7hSy1hnz9RpiIZ1u1u/contacts/${props.match.params.itemId}`);
 
         this.unsubscribeAsset = null;
         
@@ -22,16 +21,12 @@ export default class DetailedAssetView extends Component {
             assetId: props.match.params.itemId,
             loadingAsset: true,
             asset: {},
-            allowedExtraFunctions: false,
             dropdownOpen: false,
         };
     }
 
     componentDidMount() {
-        
         this.unsubscribeAsset = this.assetRef.onSnapshot(this.onAssetUpdate);
-        
-        // if allowed extra funcs vis fram kort 2 og 3 på høgre side
     }
     
     componentWillUnmount() {
@@ -42,11 +37,11 @@ export default class DetailedAssetView extends Component {
     onAssetUpdate = (querySnapshot) => {
         let asset = querySnapshot.data()
 
-        if(asset.date_scrapped) {
-            asset.date_scrapped = moment(asset.date_scrapped.toDate()).format("DD.MM.YYYY");
+        if(asset.created) {
+            asset.created = moment(asset.created.toDate()).format("DD.MM.YYYY");
          } 
-         if(asset.date_bought) {
-            asset.date_bought = moment(asset.date_bought.toDate()).format("DD.MM.YYYY");
+         if(asset.altered) {
+            asset.altered = moment(asset.altered.toDate()).format("DD.MM.YYYY");
          }
          
         this.setState({
@@ -67,54 +62,39 @@ export default class DetailedAssetView extends Component {
         
         else {
             
-       let firstChar = this.state.asset.title;
-
         return (
             <ContentWrapper>
                 <Row /*start på rad til venstre*/>
                     <Col lg="4">
                         <div className="card card-default" /* kort 1 venstre*/ > 
                             <div className="card-body text-center">
-                                <div className="py-4">
-                                   <h1>{firstChar.charAt(0).toUpperCase()}</h1> 
-                                </div>
-                                <h3 className="m-0 text-bold">{this.state.asset.title}</h3>
-                                <div className="my-3">
-                                   
-                                </div>
-                                <div className="text-center">
-                                    <button type="button" className="btn btn-primary">Legg til bilde </button>
-                                </div>
+                                <h1 className="m-0 text-bold">{this.state.asset.Role}</h1>
                             </div>
                         </div>
 
                         <div className="card card-default" /*kort 2  */>
                             <div className="card-header">
-                                <div className="card-title text-center">Utlån</div>
+                                <div className="card-title text-center">Datoer</div>
                             </div>
                             <div className="card-body">
                                 
                                 <div className="card-body">
-                                Lagerstatus: {this.state.asset.storage_status}
+                                Opprettet: {this.state.asset.created}
                                 </div>
 
                                 <div className="card-body">
-                                Utlånt til: {this.state.asset.loaned_by}
-                                </div>
-                        
-                                <div className="text-right">
-                                <Button color="primary">Rediger</Button>
+                                Endret: {this.state.asset.altered}
                                 </div>
                             </div>
                         </div>
 
                         <div className="card card-default" /*kort 3  */>
                             <div className="card-header">
-                                <ServiceHistoryModal />
-                                <div className="card-title text-center">Service historikk</div>
+                                <div className="card-title text-center">ID info</div>
                             </div>
+
                             <div className="card-body">
-                                
+                                Endret: {this.state.asset.altered}
                             </div>
                         </div>
 

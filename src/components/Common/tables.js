@@ -41,6 +41,15 @@ import { Router, Route, Link } from 'react-router-dom';
 export const assetsColumn = [
     {
         "label": "ID",
+        "name": "key",
+        "options": {
+            "filter": false,
+            "sort": false,
+            "display": "excluded"
+        }
+    },
+    {
+        "label": "ID",
         "name": "ID",
         "options": {
             "filter": false,
@@ -77,6 +86,23 @@ export const assetsColumn = [
             "sort": true
         }
     },
+    {
+        "label": "Dato opprettet",
+        "name": "created",
+        "options": {
+            "filter": false,
+            "sort": true
+        }
+    },
+    {
+        "label": "Opprettet av",
+        "name": "CreatedBy",
+        "options": {
+            "filter": false,
+            "sort": true
+        }
+    },
+
     /*{
         "label": "Beskrivelse",
         "name": "description_long",
