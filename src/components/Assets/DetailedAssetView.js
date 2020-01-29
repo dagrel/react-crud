@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import ContentWrapper from '../Layout/ContentWrapper';
-import { Row, Col, Dropdown, DropdownMenu, DropdownToggle, DropdownItem, Button } from 'reactstrap';
-import { assetsColumn } from '../Common/tables';
-import { DB, OrgKey } from '../Common/firebase';
+import { Row, Col, Button } from 'reactstrap';
+import { DB } from '../Common/firebase';
 import 'loaders.css/loaders.css';
 import * as moment from 'moment';
 import AssetModal from "./AssetsModal"
@@ -31,7 +30,6 @@ export default class DetailedAssetView extends Component {
     componentWillUnmount() {
         this.unsubscribeAsset();
     }
-    
 
     onAssetUpdate = (querySnapshot) => {
         let asset = querySnapshot.data()
@@ -136,13 +134,7 @@ export default class DetailedAssetView extends Component {
                                         </div>
 
                                     </div>
-                                    
                                 </Col>
-                                    
-                                <Col lg="6">  {/* kolonne inni kort oppe til høgre - høgre */}
-                                
-                                    
-                                </Col>   
                             </Row>
 
                         </div> 
@@ -156,7 +148,7 @@ export default class DetailedAssetView extends Component {
                         <div className="card-body">
                             
                             <div className="card-body">
-                            Kommentar   {this.state.asset.Comment}
+                            Kommentar: {this.state.asset.Comment}
                             </div>
 
                             <div className="text-right">

@@ -171,7 +171,7 @@ export default class AssetModal extends Component {
             let assetObj = snapshot.data();
             assetObj.deleted = true
             DB.collection(`/uni/qG7hSy1hnz9RpiIZ1u1u/contacts`).doc(tstate.state.assetId).set(assetObj).then(function(){
-                window.location.href = "/instrumenter";
+                window.location.href = "/kontakter";
             })
         })
     }
@@ -412,7 +412,7 @@ export default class AssetModal extends Component {
                 Opprett ny
             </Button>
             <Modal isOpen={this.state.modalAsset} className="modal-xl" toggle={this.toggleModalAsset.bind(this)}>
-                <ModalHeader toggle={this.toggleModalAsset.bind(this)}>Instrument</ModalHeader>
+                <ModalHeader toggle={this.toggleModalAsset.bind(this)}>Kontakt</ModalHeader>
                 <ModalBody>
                     {modalForm(this.state.modalAssetLoading, this)}
                 </ModalBody>

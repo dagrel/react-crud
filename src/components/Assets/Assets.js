@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ContentWrapper from '../Layout/ContentWrapper';
 import { Row, Col } from 'reactstrap';
 import AssetModal from "./AssetsModal"
-import { DB, OrgKey } from '../Common/firebase';
 import AssetsTable from './AssetsTable';
 
 

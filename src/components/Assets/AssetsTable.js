@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import MUIDataTable from "mui-datatables";
 import { assetsColumn } from '../Common/tables';
 
-import { DB, OrgKey } from '../Common/firebase';
+import { DB } from '../Common/firebase';
 import 'loaders.css/loaders.css';
 
 import * as moment from 'moment';

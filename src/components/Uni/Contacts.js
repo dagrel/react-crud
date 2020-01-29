@@ -10,11 +10,10 @@ export default class UniPage extends Component {
     constructor() {
         super();
         
-        //this.assetsRef = DB.collection(`organizations/${window.localStorage.getItem(OrgKey)}/assets/instrumentarchive/items`);
 
         this.unsubscribeAssets = null;
 
-        this.tableData = JSON.parse(window.localStorage.getItem("assets"));
+        this.tableData = JSON.parse(window.localStorage.getItem("test"));
         
         this.state = {
             loadingAssets: true,
