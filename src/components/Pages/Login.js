@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Route, Link, History } from 'react-router-dom';
 import { Input } from 'reactstrap';
-//import LoginRun from './Login.run';
+import LoginRun from './Login.run';
 import 'loaders.css/loaders.css';
 //import { FirebaseAuth } from 'react-firebaseui';
 //import firebase from 'firebase';
@@ -48,7 +48,7 @@ class Login extends React.Component {
     }
 
     componentDidMount() {
-        //LoginRun(this);
+        LoginRun(this);
     }
 
     render() {

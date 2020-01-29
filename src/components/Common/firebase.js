@@ -4,8 +4,8 @@ import 'firebase/firestore';
 import 'firebase/storage';
 
 
-const config = {
-    apiKey: "AIzaSyBi3bI1SYnVcHJGRAlTa5SMCwUCch3hpaQ",
+/*const config = {
+   apiKey: "AIzaSyBi3bI1SYnVcHJGRAlTa5SMCwUCch3hpaQ",
     authDomain: "test1-10fe4.firebaseapp.com",
     databaseURL: "https://test1-10fe4.firebaseio.com",
     projectId: "test1-10fe4",
@@ -14,8 +14,9 @@ const config = {
     appId: "1:712307666399:web:e40194294bd16178c7686a",
     measurementId: "G-1EY3J89D6B",
     timestampsInSnapshots: true
-  };
-/*const config = {
+  };*/
+
+  const config = {
     apiKey: "AIzaSyAPiGSOlobmiekwazYLiX9SDKUWnzj-ArE",
     authDomain: "demo2019-abc.firebaseapp.com",
     databaseURL: "https://demo2019-abc.firebaseio.com",
@@ -23,7 +24,7 @@ const config = {
     storageBucket: "demo2019-abc.appspot.com",
     messagingSenderId: "145431894793",
     timestampsInSnapshots: true
-};*/
+};
 
 export const firebaseTimestamp = firebase.firestore.Timestamp;
 export const firebaseFieldValue = firebase.firestore.FieldValue;
