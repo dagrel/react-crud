@@ -17,8 +17,6 @@ export default (state) => {
 			window.localStorage.setItem(UidKey, uid);
 			
 			var userRef = DB.collection("users").doc(uid);
-			var logRef = DB.collection("statistics/users/login").doc();
-			var userLogRef = userRef.collection("userlog").doc();
 			
 			userRef.get().then(function(user) {
 				if (user.exists) {
@@ -28,24 +26,13 @@ export default (state) => {
 
 					userObj.last_logged_in = last_logged_in;
 
-					var logObj = {
-						uid: user.id,
-						username: userObj.username,
-						name: userObj.name,
-						timestamp: last_logged_in
-					};
-
-					var userLogObj = {
-						timestamp: last_logged_in
-					};
 					
 					userBatch.set(userRef, userObj);
 					
-					
 					userBatch.commit().then(function () {
 						var favOrgId = user.data().fav_org;
-						var userRolesRef = DB.collection("users").doc(uid+"/styreportalen/"+favOrgId);
-						var userOrgTablesRef = DB.collection(`users/${uid}/styreportalen/${favOrgId}/tables`);
+						var userRolesRef = DB.collection("users").doc(uid+"/uni/"+favOrgId);
+						var userOrgTablesRef = DB.collection(`users/${uid}/uni/${favOrgId}/tables`);
 						var orgTablesRef = DB.collection(`organizations/${favOrgId}/tables`);
 
 						Promise.all([userRolesRef.get(), userOrgTablesRef.get(), orgTablesRef.get()]).then(function(results) {

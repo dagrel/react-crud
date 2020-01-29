@@ -60,7 +60,9 @@ export default class AssetsTable extends Component {
              if(assetsObj.created) {
                 assetsObj.created = moment(assetsObj.created.toDate()).format("DD.MM.YYYY");
              } 
+             if(!assetsObj.deleted){
               assets.push(assetsObj);
+          }
           });
         
 

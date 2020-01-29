@@ -55,7 +55,7 @@ class Header extends Component {
                     <div className="navbar-header">
                         <a className="navbar-brand" href="#/">
                             <div color="secondary">
-                                <h1>Uni Economy</h1>
+                                <h1>TEST</h1>
                             </div>
                             <div className="brand-logo-collapsed">
                             </div>

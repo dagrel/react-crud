@@ -4,7 +4,7 @@ import 'firebase/firestore';
 import 'firebase/storage';
 
 
-/*const config = {
+const config = {
    apiKey: "AIzaSyBi3bI1SYnVcHJGRAlTa5SMCwUCch3hpaQ",
     authDomain: "test1-10fe4.firebaseapp.com",
     databaseURL: "https://test1-10fe4.firebaseio.com",
@@ -14,9 +14,9 @@ import 'firebase/storage';
     appId: "1:712307666399:web:e40194294bd16178c7686a",
     measurementId: "G-1EY3J89D6B",
     timestampsInSnapshots: true
-  };*/
+  };
 
-  const config = {
+  /*const config = {
     apiKey: "AIzaSyAPiGSOlobmiekwazYLiX9SDKUWnzj-ArE",
     authDomain: "demo2019-abc.firebaseapp.com",
     databaseURL: "https://demo2019-abc.firebaseio.com",
@@ -24,7 +24,7 @@ import 'firebase/storage';
     storageBucket: "demo2019-abc.appspot.com",
     messagingSenderId: "145431894793",
     timestampsInSnapshots: true
-};
+};*/
 
 export const firebaseTimestamp = firebase.firestore.Timestamp;
 export const firebaseFieldValue = firebase.firestore.FieldValue;
@@ -38,13 +38,13 @@ export const DB = fbdb;
 export const Storage = firebaseApp.storage().ref();
 export const Auth = firebaseApp.auth();
 
-export const UidKey = 'styrearbeid-uid-key';
-export const OrgKey = 'styrearbeid-org-key';
-export const OrgNameKey = 'styrearbeid-org-name-key';
-export const RoleKey = 'styrearbeid-role-key';
-export const CalKey = 'styrearbeid-calendar-key';
-export const PinKey = 'styrearbeid-pin-key';
-export const PinFilterKey = 'styrearbeid-pin-filter-key';
+export const UidKey = 'test';
+export const OrgKey = 'test1';
+export const OrgNameKey = 'test2';
+export const RoleKey = 'test3';
+export const CalKey = 'test4';
+export const PinKey = 'test5';
+export const PinFilterKey = 'test6';
 
 export const isAuthenticated = () => {
     return !!Auth.currentUser || !!localStorage.getItem(UidKey);
@@ -55,7 +55,6 @@ export const hasRole = (reqRoles) => {
     if(roles){
         roles = roles.split(",");
 
-        
         if(roles.indexOf(reqRoles) >= 0){
             return true;
         } else {

@@ -149,7 +149,8 @@ export default class AssetModal extends Component {
                         Role: "",
                         ParentBusinessRelationID: "",
                         StatusCode: "",
-                        UpdatedBy: ""
+                        UpdatedBy: "",
+                        deleted: false
                     }
                 });
             }).catch(err => {
@@ -164,7 +165,16 @@ export default class AssetModal extends Component {
         e.preventDefault();
     }
 
-    
+    onDelete = () => {
+        var tstate = this;
+        DB.collection(`/uni/qG7hSy1hnz9RpiIZ1u1u/contacts`).doc(tstate.state.assetId).get().then(function(snapshot) {
+            let assetObj = snapshot.data();
+            assetObj.deleted = true
+            DB.collection(`/uni/qG7hSy1hnz9RpiIZ1u1u/contacts`).doc(tstate.state.assetId).set(assetObj).then(function(){
+                window.location.href = "/instrumenter";
+            })
+        })
+    }
 
     toggle = () => {
         this.setState({
@@ -376,7 +386,7 @@ export default class AssetModal extends Component {
                                 <span>Rediger</span>
                             </DropdownItem>
                             
-                            <DropdownItem>
+                            <DropdownItem onClick={this.onDelete.bind(this)}>
                                 <span className="text-warning">Slett kontakt</span>
                             </DropdownItem>
                         </DropdownMenu>

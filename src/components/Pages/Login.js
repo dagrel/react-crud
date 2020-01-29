@@ -14,40 +14,33 @@ class Login extends React.Component {
             showLogin: true,
             showLoginLoading: false,
             showLoginError: false,
-            showMobile: false,
-            showMobileLoading: false,
-            showMobileError: false,
-            showMobileConfirm: false,
-            showMobileConfirmLoading: false,
-            showMobileConfirmError: false
+            
         };
     };
 
     displayLogin() {
         this.setState({
             showLogin: true,
-            showMobile: false,
-            confirmMobileForm: false
+            
         });
     }
 
     displayMobileLogin() {
         this.setState({
             showLogin: false,
-            showMobile: true,
-            confirmMobileForm: false
+           
         });
     }
 
     displayConfirmMobileLogin() {
         this.setState({
             showLogin: false,
-            showMobile: false,
-            confirmMobileForm: true
+           
         });
     }
 
     componentDidMount() {
+        console.log(LoginRun)
         LoginRun(this);
     }
 

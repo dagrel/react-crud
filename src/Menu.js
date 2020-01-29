@@ -5,7 +5,7 @@ const Menu = [
     },
     
     {
-        name: 'Uni Economy',
+        name: 'TEST1111',
         icon: 'icon-note',
         translate: 'sidebar.nav.persons.ASSETS',
         submenu: [{
