@@ -11,7 +11,7 @@ export default (state) => {
 			var uid = user.uid;
 			window.localStorage.setItem(UidKey, uid);
 			
-			window.location.href = "/styrearbeid";
+			window.location.href = "/framside";
 			
 		} else {
 			window.localStorage.removeItem(UidKey);

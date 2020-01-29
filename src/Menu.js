@@ -5,12 +5,12 @@ const Menu = [
     },
     
     {
-        name: 'TEST1111',
+        name: 'Uni Economy',
         icon: 'icon-note',
         translate: 'sidebar.nav.persons.ASSETS',
         submenu: [{
                 name: 'Kontakter',
-                path: '/instrumenter',
+                path: '/kontakter',
             }
         ]
     },
