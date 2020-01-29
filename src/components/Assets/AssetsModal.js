@@ -365,7 +365,6 @@ export default class AssetModal extends Component {
                                         <span className="invalid-feedback">Må fylles ut</span>
                                     </Col>
                                 </div>
-                                
                             </Col>
                       </Row>
                     </form>

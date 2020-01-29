@@ -39,11 +39,9 @@ class RoleRequiredRoute extends Route {
     */
     render() {
         // call some method/function that will validate if user is logged in
-        if(!hasRole(this.props.role)){
-            return <Redirect to="/styrearbeid"></Redirect>
-        } else {
+        
             return <this.props.component />
-        }
+        
     }
 };
 
