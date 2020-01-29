@@ -18,18 +18,18 @@ class Offsidebar extends Component {
         var organizationsArray = this.state.organizations;
 
         var orgId = window.localStorage.getItem(OrgKey);
-        var orgRef = DB.doc("organizations/"+orgId);
+        var orgRef = DB.doc("uni/"+orgId);
 
         var uid = window.localStorage.getItem(UidKey);
         var userRef = DB.collection("users").doc(uid);
 
         let tState = this;
 
-        var userRolesRef = DB.collection("users").doc(uid+"/styreportalen/"+orgId);
-        var userOrgTablesRef = DB.collection(`users/${uid}/styreportalen/${orgId}/tables`);
-        var orgTablesRef = DB.collection(`organizations/${orgId}/tables`);
+        var userRolesRef = DB.collection("users").doc(uid+"/ue/"+orgId);
+        var userOrgTablesRef = DB.collection(`users/${uid}/ue/${orgId}/contacts`);
+        var orgTablesRef = DB.collection(`ue/${orgId}/contacts`);
         
-        Promise.all([orgRef.get(), userRef.get(), userRef.collection("styreportalen").orderBy("name").get(), userRolesRef.get(), userOrgTablesRef.get(), orgTablesRef.get()]).then(function(results) {
+        Promise.all([orgRef.get(), userRef.get(), userRef.collection("ue").orderBy("name").get(), userRolesRef.get(), userOrgTablesRef.get(), orgTablesRef.get()]).then(function(results) {
             var org = results[0];
             var user = results[1];
             var organizations = results[2];

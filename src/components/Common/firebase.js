@@ -16,16 +16,6 @@ const config = {
     timestampsInSnapshots: true
   };
 
-  /*const config = {
-    apiKey: "AIzaSyAPiGSOlobmiekwazYLiX9SDKUWnzj-ArE",
-    authDomain: "demo2019-abc.firebaseapp.com",
-    databaseURL: "https://demo2019-abc.firebaseio.com",
-    projectId: "demo2019-abc",
-    storageBucket: "demo2019-abc.appspot.com",
-    messagingSenderId: "145431894793",
-    timestampsInSnapshots: true
-};*/
-
 export const firebaseTimestamp = firebase.firestore.Timestamp;
 export const firebaseFieldValue = firebase.firestore.FieldValue;
 

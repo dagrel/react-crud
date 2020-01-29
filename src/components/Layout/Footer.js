@@ -6,11 +6,10 @@ class Footer extends Component {
         const year = new Date().getFullYear()
         return (
             <footer className="footer-container">
-                <span>&copy; {year} - Styreportalen</span>
+                <span>&copy; {year} - Uni Economy</span>
             </footer>
         );
     }
-
 }
 
 export default Footer;

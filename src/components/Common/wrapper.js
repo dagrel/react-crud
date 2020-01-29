@@ -1,16 +1,4 @@
-/**
- * This library was created to emulate some jQuery features
- * used in this template only with Javascript and DOM
- * manipulation functions (IE10+).
- * All methods were designed for an adequate and specific use
- * and don't perform a deep validation on the arguments provided.
- *
- * IMPORTANT:
- * ==========
- * It's suggested NOT to use this library extensively unless you
- * understand what each method does. Instead, use only JS or
- * you might even need jQuery.
- */
+
 
 (function(global, factory) {
     if (typeof exports === 'object') { // CommonJS-like

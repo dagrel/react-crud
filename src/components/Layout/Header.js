@@ -79,12 +79,6 @@ class Header extends Component {
                     { /* END Left navbar */ }
                     { /* START Right Navbar */ }
                     <ul className="navbar-nav flex-row">
-                        { /* Search icon 
-                        <li className="nav-item">
-                            <a className="nav-link" href="" data-search-open="">
-                                <em className="icon-magnifier"></em>
-                            </a>
-                        </li> */ }
                         { /* Fullscreen (only desktops) */ }
                         <li className="nav-item d-none d-md-block">
                             <ToggleFullscreen className="nav-link"/>
@@ -135,21 +129,8 @@ class Header extends Component {
                                 <em className="icon-notebook"></em>
                             </a>
                         </li>
-                        { /* END Offsidebar menu */ }
-                    </ul>
-                    { /* END Right Navbar */ }
-
-                    { /* START Search form 
-                    <form className="navbar-form" role="search" action="search.html">
-                       <div className="form-group">
-                          <input className="form-control" type="text" placeholder="Type and hit enter ..."/>
-                          <div className="fa fa-times navbar-form-close" data-search-dismiss=""></div>
-                       </div>
-                       <button className="d-none" type="submit">Submit</button>
-                    </form>
-                     END Search form */ }
-                </nav>
-                { /* END Top Navbar */ }
+                       </ul>
+                       </nav>
             </header>
             );
     }
