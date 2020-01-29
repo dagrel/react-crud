@@ -10,26 +10,7 @@ class AssetsPage extends Component {
     constructor() {
         super();
         
-        this.assetsRef = DB.collection(`organizations/${window.localStorage.getItem(OrgKey)}/assets/instrumentarchive/items`);
 
-        this.unsubscribeAssets = null;
-
-        this.tableData = JSON.parse(window.localStorage.getItem("assets"));
-        
-        this.state = {
-            loadingAssets: true,
-            assets: [
-            ],
-            dropdownAssetsOpen: false
-        };
-    }
-
-    componentDidMount() {
-        
-    }
-    
-    componentWillUnmount() {
-        
     }
 
     render() {
@@ -49,7 +30,7 @@ class AssetsPage extends Component {
                     <Col>
                         <div className="card card-default">
                             
-                            <AssetsTable height="650" title="Instrumenter" />
+                            <AssetsTable height="650" title="Contacts" />
                             
                         </div>
                     </Col>
